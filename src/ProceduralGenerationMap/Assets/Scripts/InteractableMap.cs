@@ -3,8 +3,9 @@ using UnityEngine;
 
     public class InteractableMap : MonoBehaviour
     {
-        [SerializeField] Texture2D _texture;
-        [SerializeField] TerrainType[] _terrainTypes;
+        [SerializeField] private Texture2D _texture;
+        [SerializeField] private TerrainType[] _terrainTypes;
+        [SerializeField] private int _brushSize = 1; 
         
 
         private void Update()
@@ -15,10 +16,16 @@ using UnityEngine;
             //Debug.Log(hit.textureCoord);
             
             Vector2Int pixelPosition = new Vector2Int((int)(hit.textureCoord.x  *100), (int)(hit.textureCoord.y * 100));
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0))
             {
-                
-                _texture.SetPixel(pixelPosition.x,pixelPosition.y, Color.red);
+                for (int i = 0; i < _brushSize; i++)
+                {
+                    for (int j = 0; j < _brushSize; j++)
+                    {
+                        _texture.SetPixel(pixelPosition.x + i,pixelPosition.y + j, Color.red);        
+                    }
+                }
+                //_texture.SetPixel(pixelPosition.x,pixelPosition.y, Color.red);
                 _texture.Apply();
             }
         }
