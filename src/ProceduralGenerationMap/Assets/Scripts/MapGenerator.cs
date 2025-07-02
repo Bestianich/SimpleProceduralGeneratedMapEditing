@@ -15,6 +15,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private float _lacunarity;
     [SerializeField] private MapDisplay _mapDisplay;
     [SerializeField] private TerrainType[] _terrainType;
+    [SerializeField] private InteractableMap _interactableMap;
     private void Awake()
     {
         if (_mapDisplay == null)
@@ -50,10 +51,15 @@ public class MapGenerator : MonoBehaviour
         if (_drawMode == DrawMode.ColourMap)
         {
             _mapDisplay.DrawTexture(TextureGenerator.TextureFromColourMap(colorMap , _mapWidth , _mapHeight));
+            _interactableMap.SetTexture(_mapDisplay.GetTexture());
         }
-        else
+        else if (_drawMode == DrawMode.NoiseMap)
         {
             _mapDisplay.DrawTexture(TextureGenerator.TextureFromHeightMap(noiseMap));    
+        }
+        else if (_drawMode == DrawMode.SpriteMap)
+        {
+            
         }
     }
 }
@@ -62,5 +68,6 @@ public class MapGenerator : MonoBehaviour
 public enum DrawMode
 {
     NoiseMap,
-    ColourMap
+    ColourMap,
+    SpriteMap
 };

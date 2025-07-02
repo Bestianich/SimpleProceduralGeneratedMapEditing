@@ -10,4 +10,9 @@ public class MapDisplay : MonoBehaviour
         _textureRenderer.material.mainTexture = texture;
         _textureRenderer.transform.localScale = new Vector3(texture.width, 1, texture.height);
     }
+
+    public Texture2D GetTexture()
+    {
+        return _textureRenderer.material.mainTexture as Texture2D;
+    }
 }

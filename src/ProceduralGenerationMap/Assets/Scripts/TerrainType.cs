@@ -7,5 +7,5 @@ public struct TerrainType
     public string name;
     public float height;
     public Color colour;
-    
+    public Sprite sprite;
 }
