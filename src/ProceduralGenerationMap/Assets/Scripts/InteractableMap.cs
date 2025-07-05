@@ -18,11 +18,11 @@ using UnityEngine;
             Vector2Int pixelPosition = new Vector2Int((int)(hit.textureCoord.x  *100), (int)(hit.textureCoord.y * 100));
             if (Input.GetMouseButton(0))
             {
-                for (int i = 0; i < _brushSize; i++)
+                for (int i = 0; i < Brush.size; i++)
                 {
-                    for (int j = 0; j < _brushSize; j++)
+                    for (int j = 0; j < Brush.size; j++)
                     {
-                        _texture.SetPixel(pixelPosition.x + i,pixelPosition.y + j, Color.red);        
+                        _texture.SetPixel(pixelPosition.x + i,pixelPosition.y + j, Brush.color);        
                     }
                 }
                 //_texture.SetPixel(pixelPosition.x,pixelPosition.y, Color.red);
