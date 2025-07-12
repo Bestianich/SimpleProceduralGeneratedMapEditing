@@ -13,6 +13,20 @@ public static class Noise
         float minNoiseHeight = float.MaxValue;
         float[,] noiseMap = new float[width, height];
 
+        // for (int y = 0; y < height; y++)
+        // {
+        //     for (int x = 0; x < width; x++)
+        //     {
+        //         float sampleX = x / scale;
+        //         float sampleY = y / scale;
+        //         float perlinValue = Mathf.PerlinNoise(sampleX, sampleY) * 2 - 1;
+        //         noiseMap[x, y] = perlinValue;
+        //         
+        //     }
+        // }
+        //
+        // return noiseMap;
+        //
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)
@@ -30,7 +44,7 @@ public static class Noise
                     amplitude *= persistance;
                     frequency *= lacunarity;
                 }
-
+        
                 if (noiseHeight > maxNoiseHeight)
                 {
                     maxNoiseHeight = noiseHeight;
@@ -39,10 +53,10 @@ public static class Noise
                     minNoiseHeight = noiseHeight;
                 }
                 noiseMap[ x , y] = noiseHeight; 
-
+        
             }
         }
-
+        
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)

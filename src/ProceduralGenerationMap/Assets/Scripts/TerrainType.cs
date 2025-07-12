@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
 public struct TerrainType
 {
     public string name;
     public float height;
-    public Color colour;
-    public Sprite sprite;
+    [FormerlySerializedAs("colour")] public Color color;
 }

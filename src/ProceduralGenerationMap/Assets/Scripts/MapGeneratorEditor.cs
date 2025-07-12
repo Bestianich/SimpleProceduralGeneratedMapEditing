@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -12,12 +13,13 @@ public class MapGeneratorEditor : Editor
         {
             if (mapGenerator.IsAutoUpdate())
             {
-                mapGenerator.GenerateMap();
+                mapGenerator.GenerateMap(MapGenerator.Instance.GetDrawMode());
             }
         }
         if (GUILayout.Button("Generate Map"))
         {
-            mapGenerator.GenerateMap();
+            mapGenerator.GenerateMap(MapGenerator.Instance.GetDrawMode());
         }
     }
 }
+#endif
